@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace 'com.jorzelio.despesa'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.jorzelio.despesa"
@@ -32,12 +32,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
-repositories {
-    // Make sure that you have the following two repositories
-    google()  // Google's Maven repository
-    mavenCentral()  // Maven Central repository
+allprojects {
+    repositories {
+        // Make sure that you have the following two repositories
+        google()  // Google's Maven repository
+        mavenCentral()  // Maven Central repository
+        maven { url 'https://jitpack.io' }
+    }
 }
 
 dependencies {
@@ -45,6 +51,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation "androidx.navigation:navigation-common:2.7.4"
+    implementation "androidx.navigation:navigation-runtime:2.7.4"
+    implementation 'androidx.navigation:navigation-fragment:2.7.4'
+    implementation 'androidx.navigation:navigation-ui:2.7.4'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -60,17 +76,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    // Add the Maven coordinates and latest version of the plugin
-    //classpath 'PLUGIN_MAVEN_COORDINATES:PLUGIN_VERSION'
-    //classpath "com.google.firebase:firebase-appdistribution-gradle:4.0.0"
-    //classpath 'com.google.firebase:perf-plugin:1.4.2'
-}
 
-allprojects {
+    implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
 
-    repositories {
-        // Make sure that you have the following two repositories
-        google()  // Google's Maven repository
-        mavenCentral()  // Maven Central repository
-    }
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
